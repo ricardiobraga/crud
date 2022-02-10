@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .funcionarios {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+
+            
+            
+            gap: 15px;
+        }
+        .funcionarios div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+
+            width: 40%;
+            
+            gap: 15px;
+        }
+
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://localhost:3001/funcionario" method="post">
+        
+        <input class="nome" name="nome" type="text">
+        
+
+        <button type="submit">send</button>
+    </form>
+    
+
+        <div class="funcionarios"></div>
+        
+</body>
+
+
+    <script>
+        let nameInput = document.querySelector('.nome')
+        
+        let divFuncionarios = document.querySelector('.funcionarios')
+        
+        let funcDiv = document.createElement('div')
+
+        let funcionarios= ["teste"]
+
+        
+        
+        fetching()
+
+        function deleteData(param){   
+
+
+            fetch("http://localhost:3001/deleteFuncionario", {
+                method: "DELETE",
+                headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify({
+                        id: param
+                    })
+            }).then(location.reload())
+                
+                
+            
+        }
+       
+        
+        function fetching(){
+            fetch("http://localhost:3001/funcionarios")
+            .catch(err => {
+                alert(err)
+            })
+            .then(res => {
+                // if(res.ok){
+                //     console.log('sucess');
+                //     res.json()
+                // } else {
+                //     console.log('not sucess');
+                // }
+                return res.json()
+            })
+            .then(data => {
+                data.map((item, i) => {
+                    contentDiv = document.createElement('div')
+                    nameDiv = document.createElement('div')
+                    deleteBtn = document.createElement('button')
+
+                    deleteBtn.setAttribute("type", "submit")
+                    deleteBtn.setAttribute("class", "btn")
+                    
+                    deleteBtn.setAttribute("onclick", `deleteData(${item.id})`)
+
+                    contentDiv.setAttribute("key", `${item.id}`)
+                    deleteBtn.innerHTML = "X"
+                    
+                    contentDiv.appendChild(nameDiv)
+                    contentDiv.appendChild(deleteBtn)
+                    divFuncionarios.appendChild(contentDiv)
+                    
+                    
+                    
+                    console.log(deleteBtn)
+                    
+                    nameDiv.innerHTML = item.nome
+                    
+                    
+                    
+                    
+                })
+                
+            })
+            
+        }
+
+
+        function save() {
+            nameInput.value
+        }
+
+
+    </script>
+</html>
