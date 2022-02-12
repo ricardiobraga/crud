@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="../css/formStyle.css" />
+
+  <title>Formulario De Produto</title>
+</head>
+
+<body>
+
+ <form action="http://localhost:3001/cadastro" method="post" >
+   <fieldset name="dados-do-cliente" class="form">
+     <legend>Nos responda algumas coisas.</legend>
+    
+     <!--nome completo-->
+     <label for="nome">Nome Completo</label>
+     <input id="nome" name="name" type="text" placeholder="Digite seu nome." autofocus required>
+    <br>
+    <br>
+     <!--email-->
+     <label for="email">E-mail</label>
+     <input id="email" name="email" type="email" placeholder="exemplo@exemplo.com" required>
+    <br>
+    <br>
+
+     <!--Data de nascimento-->
+     <label for="nascimento">Data de nascimento</label>
+     <input id="nascimento" name="nascimento" type="date" required>
+     <br>
+     <br>
+     
+
+     <!--Hobbies ou podemos colocar outra coisa. Só queria usar a opção de marcar mais de um checkbox-->
+
+    <label for="hobbies">Quais seus hobbies?</label> 
+
+    <div>
+     <input type="checkbox" id="livros" name="hobbiesBooks" value="Ler-livros">
+     <label for="livros">Ler livros</label>
+    </div>
+
+    <div>
+     <input type="checkbox" id="jogos-digitais" name="hobbiesGames" value="jogos-digitais">
+     <label for="jogos-digitais">Jogos Digitais</label>
+    </div>
+
+    <div>
+     <input type="checkbox" id="esportes" name="hobbiesSports" value="esportes">
+     <label for="esportes">Esportes</label>
+    </div>
+
+    <br>
+    <!--  Cargo -->
+
+    <label for="cargo">Qual seu cargo?</label>
+
+    <label for="estagiario">Estagiario</label>
+    <input type="radio" id="estagiario" name="cargo" value="estagiario" required>
+
+    <label for="vendedor">Vendedor</label>
+    <input type="radio" id="vendedor" name="cargo" value="vendedor">
+
+    <label for="gerente">Gerente</label>
+    <input type="radio" id="gerente" name="cargo" value="gerente">
+
+    <label for="administrativo">Administrativo</label>
+    <input type="radio" id="administrativo" name="cargo" value="administrativo">
+
+    <br>
+    <br>
+    <!--Mensagem    -->
+
+    <label for="message">Mensagem</label>
+
+    <textarea name="mensagem" id="message" cols="30" rows="10" maxlength="250" placeholder="Gostaria de nos deixar uma mensagem?"></textarea>
+    <br>
+    <br>
+    <button type="submit" name="button" >Enviar</button>
+     
+   </fieldset>
+   <!-- <button class="btn" onclick="clickTest()">click</button> -->
+ </form>
+
+
+
+</body>
+<script>
+    let date = document.querySelector('#nascimento')
+    function clickTest() {
+      console.log(date.value)
+    }
+
+    
+</script>
+</html>

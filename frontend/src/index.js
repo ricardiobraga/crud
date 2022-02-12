@@ -5,12 +5,16 @@ import path from 'path'
 
 const app = express()
 app.use(express.json())
-app.use(express.static('public'))
+app.use(express.static('src'))
 
 
 
 app.get('/', (req, res) => {    
-    res.sendFile( path.resolve('src/index.html') );
+    res.sendFile( path.resolve('src/pages/index.html') );
 })
 
-app.listen(3000, () => "rodando front")
+app.get('/form', (req, res) => {    
+    res.sendFile( path.resolve('src/pages/formulario.html') );
+})
+
+app.listen(3000, () => console.log("rodando front"))
