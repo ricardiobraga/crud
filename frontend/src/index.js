@@ -17,4 +17,8 @@ app.get('/form', (req, res) => {
     res.sendFile( path.resolve('src/pages/formulario.html') );
 })
 
+app.get('/cadastros', (req, res) => {    
+    res.sendFile( path.resolve('src/pages/cadastros.html') );
+})
+
 app.listen(3000, () => console.log("rodando front"))

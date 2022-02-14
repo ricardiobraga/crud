@@ -71,7 +71,7 @@ export async function insertFuncionario(req, res){
 
 export async function selectPessoas(req, res){
     openDb().then(db => {
-     db.all('SELECT * FROM funcionario')
+     db.all('SELECT * FROM funcionarios')
     .then(pessoas => res.json(pessoas))
 })
 }
@@ -80,7 +80,7 @@ export async function deletePessoa(req, res){
     let id = req.body.id        
 
         openDb().then(db => {
-            db.get('DELETE FROM funcionario WHERE id=?', [id])
+            db.get('DELETE FROM funcionarios WHERE id=?', [id])
             .then(res=>res)
     })
     

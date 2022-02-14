@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/formStyle.css" />
+
+
+    <title>Document</title>
+</head>
+<body>  
+    <nav >
+        <div class="menu">
+          <button onclick="window.location.href='/form'" >Formulário</button>
+          <button class="active" onclick="window.location.href='/cadastros'"  >Cadastros</button>
+        </div>
+      </nav>  
+        <main class="content">
+            <!-- <div class="funcionarios"></div> -->
+
+            <table>
+                <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>E-mail</th>
+                      <th>Nascimento</th>
+                      <th>Hobbies</th>
+                      <th>Cargo</th>
+                      <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="tBobodyContent">
+                   
+                </tbody>
+              </table>
+        </main>
+        
+</body>
+
+
+    <script>
+        let nameInput = document.querySelector('.nome')
+        
+        let divFuncionarios = document.querySelector('.funcionarios')
+        let content = document.querySelector('.tBobodyContent')
+        
+        let funcDiv = document.createElement('div')
+
+        
+
+        
+        
+        fetching()
+
+        function deleteData(param){   
+
+
+            fetch("http://localhost:3001/deleteFuncionario", {
+                method: "DELETE",
+                headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify({
+                        id: param
+                    })
+            }).then(location.reload())               
+                
+            
+        }
+       
+        
+        function fetching(){
+            fetch("http://localhost:3001/funcionarios")
+            .catch(err => {
+                alert(err)
+            })
+            .then(res => {
+                // if(res.ok){
+                //     console.log('sucess');
+                //     res.json()
+                // } else {
+                //     console.log('not sucess');
+                // }
+                return res.json()
+            })
+            .then(data => {
+                data.map((item, i) => {
+                    contentDiv = document.createElement('tr')
+                    nameDiv = document.createElement('td')
+                    emailDiv = document.createElement('td')
+                    nascimentoDiv = document.createElement('td')
+                    hobbies = document.createElement('td')
+                    //hobbiesGamesDiv = document.createElement('td')
+                   // hobbiesSportsDiv = document.createElement('td')
+                    cargoDiv = document.createElement('td')
+                    btn = document.createElement('td')
+
+                    msgDiv = document.createElement('div')
+
+                    deleteBtn = document.createElement('button')
+
+                    deleteBtn.setAttribute("type", "submit")
+                    deleteBtn.setAttribute("class", "btn")
+
+                    
+                    
+                    deleteBtn.setAttribute("onclick", `deleteData(${item.id})`)
+
+                    contentDiv.setAttribute("key", `${item.id}`)
+                    deleteBtn.innerHTML = "X"
+                    
+                    contentDiv.appendChild(nameDiv)
+                    contentDiv.appendChild(emailDiv)
+                    contentDiv.appendChild(nascimentoDiv)
+                    contentDiv.appendChild(hobbies)
+                    //contentDiv.appendChild(hobbiesGamesDiv)
+                    //contentDiv.appendChild(hobbiesSportsDiv)
+                    contentDiv.appendChild(cargoDiv)
+                    //contentDiv.appendChild(msgDiv)
+
+                    btn.appendChild(deleteBtn)
+                    contentDiv.appendChild(btn)
+                    content.appendChild(contentDiv)
+                    
+                    
+                    
+                    console.log(item)
+                    
+                    nameDiv.innerHTML = item.name
+                    emailDiv.innerHTML = item.email
+                    nascimentoDiv.innerHTML = item.nascimento
+                    
+
+                    item.hobbies_books && (hobbies.innerHTML += item.hobbies_books + ' | ')
+                    item.hobbies_games && (hobbies.innerHTML += item.hobbies_games + ' | ')
+                    item.hobbies_sports && (hobbies.innerHTML += item.hobbies_sports )
+
+                    
+
+                    
+                    console.log("aqui: ",hobbies);
+                    cargoDiv.innerHTML = item.cargo
+                    //msgDiv.innerHTML = item.mensagem
+                    
+                    
+                    
+                    
+                })
+                
+            })
+            
+        }
+
+
+        function save() {
+            nameInput.value
+        }
+
+
+    </script>
+</html>

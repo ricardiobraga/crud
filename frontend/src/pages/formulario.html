@@ -11,6 +11,14 @@
 </head>
 
 <body>
+<nav >
+  <div class="menu">
+    <button class="active"  onclick="window.location.href='/form'" >Formulário</button>
+    <button onclick="window.location.href='/cadastros'"  >Cadastros</button>
+  </div>
+</nav>
+
+
 
  <form action="http://localhost:3001/cadastro" method="post" >
    <fieldset name="dados-do-cliente" class="form">
@@ -44,12 +52,12 @@
     </div>
 
     <div>
-     <input type="checkbox" id="jogos-digitais" name="hobbiesGames" value="jogos-digitais">
+     <input type="checkbox" id="jogos-digitais" name="hobbiesGames" value="Jogos-Digitais">
      <label for="jogos-digitais">Jogos Digitais</label>
     </div>
 
     <div>
-     <input type="checkbox" id="esportes" name="hobbiesSports" value="esportes">
+     <input type="checkbox" id="esportes" name="hobbiesSports" value="Esportes">
      <label for="esportes">Esportes</label>
     </div>
 
@@ -76,7 +84,7 @@
 
     <label for="message">Mensagem</label>
 
-    <textarea name="mensagem" id="message" cols="30" rows="10" maxlength="250" placeholder="Gostaria de nos deixar uma mensagem?"></textarea>
+    <textarea name="mensagem" id="message" cols="30" rows="10" maxlength="250"  placeholder="Gostaria de nos deixar uma mensagem?"></textarea>
     <br>
     <br>
     <button type="submit" name="button" >Enviar</button>

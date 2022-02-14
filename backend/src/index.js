@@ -6,7 +6,7 @@ import { createTable, selectPessoas, deletePessoa, deleteTable, insertFuncionari
 import { openDb } from './dbConfig.js'
 
 
-createTable()
+
 //deleteTable("funcionario")
 
 
